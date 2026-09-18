@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Profile & Academic Dashboard - Thiagarajar College</title>
+    <meta name="description" content="Official Student Profile, Academic Performance, and Transport application for Thiagarajar College." />
+    <meta property="og:title" content="Student Profile & Academic Dashboard - Thiagarajar College" />
+    <meta property="og:description" content="Official Student Profile, Academic Performance, and Transport application for Thiagarajar College." />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Top College Navigation Header -->
+    <header class="app-header" id="appHeader">
+      <div class="header-container">
+        <div class="brand-wrapper nav-link" data-target="homeSection" role="button" title="Student Profile & Academic Dashboard">
+          <div class="app-logo-badge">
+            <svg class="app-logo-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 class="app-main-title">Student Profile & Academic Dashboard</h1>
+          </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav aria-label="Main Navigation">
+          <ul class="nav-menu" id="mainNav">
+            <li>
+              <button type="button" class="nav-link active" data-target="homeSection" id="navBtnHome">
+                Home
+              </button>
+            </li>
+            <li>
+              <button type="button" class="nav-link" data-target="profileSection" id="navBtnProfile">
+                Profile
+              </button>
+            </li>
+            <li>
+              <button type="button" class="nav-link" data-target="academicSection" id="navBtnAcademic">
+                Academic Performance
+              </button>
+            </li>
+            <li>
+              <button type="button" class="nav-link" data-target="transportSection" id="navBtnTransport">
+                Transport
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Right Controls: User Initials Avatar -->
+        <div class="header-right-actions">
+          <div class="header-user-pill nav-link" data-target="profileSection" id="headerUserBtn" title="View Profile">
+            <div id="topUserThumbnail" class="user-initials-circle">VR</div>
+            <span id="topUserName" class="user-pill-name">VAISHNAVI R</span>
+            <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Container with dynamic section tabs -->
+    <main class="main-wrapper" id="mainContent">
+
+      <!-- ===================================================================
+           SECTION: HOME / DASHBOARD OVERVIEW (Exactly matching uploaded screenshot)
+           =================================================================== -->
+      <section id="homeSection" class="dashboard-section active">
+        <div class="home-screen-layout">
+          <!-- Welcome Banner Card -->
+          <div class="home-hero-banner" id="heroCard">
+            <h1 class="home-hero-title">Welcome back, <span id="heroStudentName">VAISHNAVI R</span></h1>
+            <p class="home-hero-sub">Welcome to my student academic dashboard.</p>
+          </div>
+
+          <!-- Student Info Strip -->
+          <div class="home-info-strip" id="homeSummaryCards">
+            <div class="info-strip-col">
+              <span class="info-strip-label">PROGRAM</span>
+              <span class="info-strip-value font-bold" id="homeCourseName">B.Sc. COMPUTER SCIENCE</span>
+            </div>
+            <div class="info-strip-divider"></div>
+            <div class="info-strip-col">
+              <span class="info-strip-label">DEPARTMENT</span>
+              <span class="info-strip-value" id="homeDeptName">Department of Computer Science</span>
+            </div>
+            <div class="info-strip-divider"></div>
+            <div class="info-strip-col">
+              <span class="info-strip-label">CURRENT TERM</span>
+              <span class="info-strip-value" id="homeCurrentSem">Semester-5</span>
+            </div>
+            <div class="info-strip-divider"></div>
+            <div class="info-strip-col">
+              <span class="info-strip-label">ROLL NUMBER</span>
+              <span class="info-strip-value font-bold" id="homeRollNo">24UCS44</span>
+            </div>
+          </div>
+
+          <!-- Academic Overview Card -->
+          <div class="home-overview-card" id="homeAcademicOverviewCard">
+            <h2 class="home-overview-heading">Academic Overview</h2>
+            <div class="home-overview-metrics-grid">
+              <div class="overview-metric-box">
+                <span class="metric-box-label">Semesters Completed</span>
+                <span class="metric-box-val" id="homeSemestersCompleted">4</span>
+              </div>
+              <div class="overview-metric-box">
+                <span class="metric-box-label">Credits Completed</span>
+                <span class="metric-box-val text-blue" id="homeCreditsCompleted">89</span>
+              </div>
+              <div class="overview-metric-box">
+                <span class="metric-box-label">Academic Record</span>
+                <span class="metric-box-val-text font-bold">Semesters 1–4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================================
+           SECTION: STUDENT PROFILE (Modern App UI)
+           =================================================================== -->
+      <section id="profileSection" class="dashboard-section">
+        <!-- Modern Institutional App Strip -->
+        <div class="portal-institutional-strip">
+          <div class="strip-left">
+            <div class="learning-icon-box" title="My Learning">
+              <svg class="learning-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+            </div>
+            <div class="learning-pill-btn">
+              <span class="learning-pill-dot"></span>
+              My Learning
+            </div>
+            <span class="strip-institution-tag">Thiagarajar College (Autonomous) • Madurai</span>
+          </div>
+
+          <div class="strip-right-card">
+            <div id="bannerPhoto" class="strip-initials-circle">VA</div>
+            <div class="strip-user-text">
+              <h3 id="bannerStudentName" class="strip-user-name">VAISHNAVI R</h3>
+              <div id="bannerCollegeName" class="strip-college-name">Thiagarajar College</div>
+              <div id="bannerSubDetails" class="strip-batch-info">Semester-5 | SECTION A | 2026-2027</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success/Update Notification Banner -->
+        <div class="profile-feedback-alert" id="profileFeedbackAlert" style="display: none;">
+          <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span id="profileAlertText">Profile updated successfully.</span>
+        </div>
+
+        <!-- Modern Profile Hero Identity Card -->
+        <div class="modern-profile-hero-card">
+          <div class="hero-cover-pattern"></div>
+          <div class="hero-profile-body">
+            <div class="hero-avatar-area">
+              <div class="hero-avatar-container">
+                <div id="profilePhoto" class="profile-initials-circle">VA</div>
+                <span class="hero-status-indicator" title="Active Student"></span>
+              </div>
+            </div>
+
+            <div class="hero-info-area">
+              <div class="hero-info-header">
+                <div>
+                  <div class="hero-status-pill">
+                    <span class="status-live-dot"></span>
+                    <span id="heroStudentStatusText">Active Student</span>
+                  </div>
+                  <h2 class="hero-student-fullname" id="profileName">VAISHNAVI R</h2>
+                  <div class="hero-badge-chips" id="heroBadgeChips">
+                    <span class="hero-chip font-mono">Roll: 24UCS44</span>
+                    <span class="hero-chip">B.Sc. Computer Science</span>
+                    <span class="hero-chip">Semester-5 (Sec A)</span>
+                    <span class="hero-chip">Undergraduate - AIDED</span>
+                  </div>
+                </div>
+
+                <div class="profile-action-controls" id="profileActionControls">
+                  <button type="button" class="btn-edit-profile" id="btnEditProfile">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    Edit Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 1: Academic & Enrollment Information (Modern Data Grid) -->
+        <div class="profile-card-container modern-section-card">
+          <div class="modern-card-header">
+            <div class="header-icon-title">
+              <div class="card-header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="modern-card-title">Academic &amp; Enrollment Information</h3>
+                <p class="modern-card-desc">Official university registry and curriculum records</p>
+              </div>
+            </div>
+            <span class="section-tag-badge">Curriculum 2024-2027</span>
+          </div>
+
+          <div class="modern-data-grid" id="primaryDetailsContainer">
+            <!-- Dynamically rendered by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Section 2: Personal & Contact Information (Title "Profile" removed) -->
+        <div class="profile-card-container modern-section-card">
+          <div class="modern-card-header">
+            <div class="header-icon-title">
+              <div class="card-header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div>
+                <h3 class="modern-card-title">Personal &amp; Contact Information</h3>
+                <p class="modern-card-desc">Identity, family contacts, and permanent residential records</p>
+              </div>
+            </div>
+            <span class="section-tag-badge">Identity Verified</span>
+          </div>
+
+          <div class="modern-data-grid" id="personalInfoDetailsContainer">
+            <!-- Dynamically rendered by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================================
+           SECTION: ACADEMIC PERFORMANCE (Exact Marks Semesters 1 to 4)
+           =================================================================== -->
+      <section id="academicSection" class="dashboard-section">
+        <!-- Clean Section Header -->
+        <div class="academic-main-header">
+          <div class="academic-header-left">
+            <h2>Academic Performance</h2>
+            <p class="academic-header-sub">Comprehensive semester breakdown, marks evaluation, and verified credit registry</p>
+          </div>
+          <div class="academic-header-right">
+            <span class="badge-tag status-pill-cleared">All 4 Semesters Cleared</span>
+          </div>
+        </div>
+
+        <!-- Clean Top Academic Summary Cards Area -->
+        <div class="academic-top-summary-grid" id="academicSummaryCards">
+          <!-- Card 1: Total Subjects -->
+          <div class="academic-summary-tile">
+            <span class="tile-label">Total Subjects</span>
+            <div class="tile-value-row">
+              <span class="tile-number" id="academicTotalSubjects">29</span>
+              <span class="tile-subtext">All Passed</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Overall Percentage -->
+          <div class="academic-summary-tile highlight-tile">
+            <span class="tile-label">Overall Percentage</span>
+            <div class="tile-value-row">
+              <span class="tile-number text-accent" id="academicOverallPct">83.15%</span>
+              <span class="tile-subtext">Cumulative</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Total Credits -->
+          <div class="academic-summary-tile">
+            <span class="tile-label">Total Credits</span>
+            <div class="tile-value-row">
+              <span class="tile-number" id="academicTotalCredits">89</span>
+              <span class="tile-subtext">89 Registered</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Passed Subjects -->
+          <div class="academic-summary-tile">
+            <span class="tile-label">Passed Subjects</span>
+            <div class="tile-value-row">
+              <span class="tile-number text-theme-dark" id="academicPassedSubjects">29</span>
+              <span class="tile-subtext">0 Arrears / Fails</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual Analytics Row: Bar Chart & Year Cards -->
+        <div class="academic-visual-grid">
+          <!-- Semester Bar Chart -->
+          <div class="visual-panel-card" id="barChartPanel">
+            <div class="panel-header-simple">
+              <h3>Semester Performance Comparison</h3>
+              <span class="panel-tag-pill">Progression</span>
+            </div>
+            <p class="panel-sub">Percentage marks progression across Semester 1, 2, 3 and 4</p>
+            <div class="bar-chart-container" id="semesterBarChart">
+              <!-- Dynamically rendered via JavaScript -->
+            </div>
+          </div>
+
+          <!-- Year-wise Summary (Year 1 and Year 2) -->
+          <div class="year-performance-stack">
+            <div class="year-card" id="year1PerformanceCard">
+              <!-- Rendered by JS -->
+            </div>
+            <div class="year-card" id="year2PerformanceCard">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Semester Marks Tables (Semesters 1, 2, 3, 4) -->
+        <div id="semesterTablesContainer">
+          <!-- Dynamically populated with 4 semester tables & calculations via JavaScript -->
+        </div>
+      </section>
+
+
+      <!-- ===================================================================
+           SECTION: TRANSPORT (Bike Commute & Route Sequence)
+           =================================================================== -->
+      <section id="transportSection" class="dashboard-section">
+        <!-- Clean Section Header -->
+        <div class="transport-main-header">
+          <div>
+            <h2>Transport</h2>
+            <p class="transport-header-sub">Daily personal commute schedule, route checkpoints, and campus transit milestones</p>
+          </div>
+          <span class="badge-tag">Active Commute Route</span>
+        </div>
+
+        <div class="transport-layout-stack">
+          <!-- Transport Summary Card (Above Timeline) -->
+          <div class="transport-summary-card" id="transportSummaryCard">
+            <!-- Populated via JavaScript -->
+          </div>
+
+          <!-- Travel Sequence Timeline (Below Summary) -->
+          <div class="transport-timeline-card" id="routeTimelineContainer">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Empty/Subtle Clean Footer (No text per user instruction) -->
+    <footer class="app-footer"></footer>
+
+    <!-- Core Dynamic Controller Script -->
+    <script src="./script.js"></script>
+  </body>
+</html>
