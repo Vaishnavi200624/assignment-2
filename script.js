@@ -739,47 +739,103 @@ function calculateOverallPerformance(semesters) {
    DOM INITIALIZATION & EVENT HANDLERS
    ============================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function switchSection(targetId) {
+  if (!targetId) return;
+
+  const sections = document.querySelectorAll('.dashboard-section');
+  let matched = false;
+
+  sections.forEach(sec => {
+    if (sec.id === targetId) {
+      sec.classList.add('active');
+      sec.style.display = 'block';
+      matched = true;
+    } else {
+      sec.classList.remove('active');
+      sec.style.display = 'none';
+    }
+  });
+
+  if (!matched) {
+    const directTarget = document.getElementById(targetId);
+    if (directTarget) {
+      directTarget.classList.add('active');
+      directTarget.style.display = 'block';
+    }
+  }
+
+  // Update active status on navigation links
+  const mainNavLinks = document.querySelectorAll('#mainNav .nav-link');
+  mainNavLinks.forEach(nl => {
+    if (nl.getAttribute('data-target') === targetId) {
+      nl.classList.add('active');
+    } else {
+      nl.classList.remove('active');
+    }
+  });
+
+  // Re-render corresponding module data when switching sections
+  if (targetId === 'homeSection') {
+    renderHomeSummary();
+  } else if (targetId === 'profileSection') {
+    renderStudentProfile();
+  } else if (targetId === 'academicSection') {
+    renderAcademicPerformance();
+  } else if (targetId === 'transportSection') {
+    renderPersonalTransport();
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Expose globally
+window.switchSection = switchSection;
+
+/**
+ * Tab Navigation Controller
+ */
+function initNavigation() {
+  // Direct click bindings for all elements with data-target or .nav-link
+  const navLinks = document.querySelectorAll('.nav-link, .nav-action-btn, [data-target]');
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('data-target');
+      if (targetId) {
+        e.preventDefault();
+        switchSection(targetId);
+      }
+    });
+  });
+
+  // Delegated event listener on document for resilient event handling
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-target]');
+    if (trigger) {
+      const targetId = trigger.getAttribute('data-target');
+      if (targetId && document.getElementById(targetId)) {
+        e.preventDefault();
+        switchSection(targetId);
+      }
+    }
+  });
+}
+
+/**
+ * Initialize application modules safely regardless of document readyState
+ */
+function initializeApp() {
   initNavigation();
   renderStudentProfile();
   renderAcademicPerformance();
   renderPersonalTransport();
   renderHomeSummary();
   initSemesterDownloads();
-});
+}
 
-/**
- * Tab Navigation Controller
- */
-function initNavigation() {
-  const navLinks = document.querySelectorAll('.nav-link, .nav-action-btn');
-  const sections = document.querySelectorAll('.dashboard-section');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('data-target');
-      if (!targetId) return;
-
-      document.querySelectorAll('.nav-link').forEach(nl => {
-        if (nl.getAttribute('data-target') === targetId) {
-          nl.classList.add('active');
-        } else {
-          nl.classList.remove('active');
-        }
-      });
-
-      sections.forEach(sec => {
-        if (sec.id === targetId) {
-          sec.classList.add('active');
-        } else {
-          sec.classList.remove('active');
-        }
-      });
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  });
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
 }
 
 /**

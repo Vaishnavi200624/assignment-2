@@ -367,6 +367,53 @@
     <!-- Empty/Subtle Clean Footer (No text per user instruction) -->
     <footer class="app-footer"></footer>
 
+    <!-- Immediate Navigation & Tab Controller Script -->
+    <script>
+      function switchSection(targetId) {
+        if (!targetId) return;
+        var sections = document.querySelectorAll('.dashboard-section');
+        var matched = false;
+        sections.forEach(function(sec) {
+          if (sec.id === targetId) {
+            sec.classList.add('active');
+            sec.style.display = 'block';
+            matched = true;
+          } else {
+            sec.classList.remove('active');
+            sec.style.display = 'none';
+          }
+        });
+        if (!matched) {
+          var el = document.getElementById(targetId);
+          if (el) {
+            el.classList.add('active');
+            el.style.display = 'block';
+          }
+        }
+        var mainNavLinks = document.querySelectorAll('#mainNav .nav-link');
+        mainNavLinks.forEach(function(nl) {
+          if (nl.getAttribute('data-target') === targetId) {
+            nl.classList.add('active');
+          } else {
+            nl.classList.remove('active');
+          }
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      window.switchSection = switchSection;
+
+      document.addEventListener('click', function(e) {
+        var trigger = e.target.closest('[data-target]');
+        if (trigger) {
+          var targetId = trigger.getAttribute('data-target');
+          if (targetId && document.getElementById(targetId)) {
+            e.preventDefault();
+            switchSection(targetId);
+          }
+        }
+      });
+    </script>
+
     <!-- Core Dynamic Controller Script -->
     <script src="./script.js"></script>
   </body>
