@@ -788,6 +788,11 @@ function switchSection(targetId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+/**
+ * State & Utilities for Profile & Exports
+ */
+let isEditingProfile = false;
+
 // Expose globally
 window.switchSection = switchSection;
 
@@ -821,24 +826,6 @@ function initNavigation() {
 }
 
 /**
- * Initialize application modules safely regardless of document readyState
- */
-function initializeApp() {
-  initNavigation();
-  renderStudentProfile();
-  renderAcademicPerformance();
-  renderPersonalTransport();
-  renderHomeSummary();
-  initSemesterDownloads();
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeApp);
-} else {
-  initializeApp();
-}
-
-/**
  * Populate Home View (Matching exact UI layout from user screenshot)
  */
 function renderHomeSummary() {
@@ -866,11 +853,6 @@ function renderHomeSummary() {
   const homeCreditsCompleted = document.getElementById('homeCreditsCompleted');
   if (homeCreditsCompleted) homeCreditsCompleted.textContent = String(overall.totalCreditsCompleted);
 }
-
-/**
- * State & Utilities for Profile & Exports
- */
-let isEditingProfile = false;
 
 function getStudentInitials() {
   if (studentProfile.firstName && studentProfile.lastName) {
@@ -1630,3 +1612,31 @@ function renderPersonalTransport() {
     `;
   }
 }
+
+// Expose module renderers globally
+window.renderStudentProfile = renderStudentProfile;
+window.renderAcademicPerformance = renderAcademicPerformance;
+window.renderPersonalTransport = renderPersonalTransport;
+window.renderHomeSummary = renderHomeSummary;
+window.initSemesterDownloads = initSemesterDownloads;
+
+/**
+ * Initialize all application modules safely when the DOM is ready
+ */
+function initializeApp() {
+  initNavigation();
+  renderStudentProfile();
+  renderAcademicPerformance();
+  renderPersonalTransport();
+  renderHomeSummary();
+  initSemesterDownloads();
+}
+
+window.initializeApp = initializeApp;
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
+

@@ -398,6 +398,18 @@
             nl.classList.remove('active');
           }
         });
+
+        // Trigger module renderer for the newly visible section
+        if (targetId === 'homeSection' && typeof window.renderHomeSummary === 'function') {
+          window.renderHomeSummary();
+        } else if (targetId === 'profileSection' && typeof window.renderStudentProfile === 'function') {
+          window.renderStudentProfile();
+        } else if (targetId === 'academicSection' && typeof window.renderAcademicPerformance === 'function') {
+          window.renderAcademicPerformance();
+        } else if (targetId === 'transportSection' && typeof window.renderPersonalTransport === 'function') {
+          window.renderPersonalTransport();
+        }
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
       window.switchSection = switchSection;
